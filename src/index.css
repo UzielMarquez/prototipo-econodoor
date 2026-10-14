@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+    --bg-page: #f2f5f7;
+    --bg-card: #ffffff;
+    --text-strong: #1d2935;
+    --border-soft: #d5dee5;
+    --brand: #1f4e6b;
+    --warning: #b45309;
+    --danger: #b42318;
+  }
+
+  body {
+    background-color: var(--bg-page);
+    color: var(--text-strong);
+    font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  }
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(31, 78, 107, 0.12);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(31, 78, 107, 0.16);
+}
+
+.glass-card:hover {
+  border-color: rgba(31, 78, 107, 0.38);
+  box-shadow: 0 10px 30px rgba(29, 41, 53, 0.08);
+}
+
+svg.lucide {
+  display: none !important;
+}
+
+span:has(> svg.lucide:only-child) {
+  display: none !important;
+}
+
+button[aria-label]:has(> svg.lucide:only-child)::after,
+button[aria-label]:has(> span > svg.lucide:only-child)::after {
+  content: attr(aria-label);
+}
+
+button[title]:not([aria-label]):has(> svg.lucide:only-child)::after,
+button[title]:not([aria-label]):has(> span > svg.lucide:only-child)::after {
+  content: attr(title);
+}
+
+button[aria-label]:has(> svg.lucide:only-child),
+button[aria-label]:has(> span > svg.lucide:only-child),
+button[title]:not([aria-label]):has(> svg.lucide:only-child),
+button[title]:not([aria-label]):has(> span > svg.lucide:only-child) {
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+}
+
+.uiverse-toggle {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  background-color: #d5dee5;
+  border-radius: 9999px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+.uiverse-toggle.active {
+  background-color: var(--brand);
+  box-shadow: 0 0 12px rgba(31, 78, 107, 0.28);
+}
+.uiverse-toggle-handle {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.uiverse-toggle.active .uiverse-toggle-handle {
+  transform: translateX(20px);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e7edf1;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 2px solid #e7edf1;
+  border-radius: 9999px;
+  background: #98a9b5;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #667d8c;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
